@@ -35,9 +35,6 @@ namespace ConsoleApp1
             Console.WriteLine("배송기사님 송장내용");
             Console.WriteLine(배송기사님.Letter);
             Console.WriteLine(배송기사님.Money);
-
-            Console.WriteLine("bbbbbbb");
-            Console.WriteLine("ccccc");
         }
     }
 }
