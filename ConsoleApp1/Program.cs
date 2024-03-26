@@ -1,4 +1,4 @@
-﻿using System.Data.SqlTypes;
+﻿using System.Diagnostics.Metrics;
 
 namespace ConsoleApp1
 {
@@ -11,30 +11,32 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            GiftBox a = new GiftBox()
-            {
-                Letter = "잘 지내지?",
-                Money = 100000
-            };
-            Console.WriteLine("A송장내용");
-            Console.WriteLine(a.Letter);
-            Console.WriteLine(a.Money);
-            GiftBox 배송기사님 = a;
+            GiftBox addressA = GiftBoxMaker("A친구야 잘 지내지?", 110000);
+            GiftBox addressB = GiftBoxMaker("B친구야 잘 지내지?", 120000);
+            GiftBox addressC = GiftBoxMaker("C친구야 잘 지내지?", 130000);
+            GiftBox[] giftBoxes = new GiftBox[3];
+            giftBoxes[0] = addressA;
+            giftBoxes[1] = addressB;
+            giftBoxes[2] = addressC;
+            Console.WriteLine("giftbox Array Count : " + giftBoxes.Length);
 
-            Console.WriteLine("배송기사님 송장내용");
-            Console.WriteLine(배송기사님.Letter);
-            Console.WriteLine(배송기사님.Money);
-
-            a.Letter = "어떻게 지내고 있어?";
-            a.Money = 150000;
-
-            Console.WriteLine("A 변경 이루 송장내용");
-            Console.WriteLine(a.Letter);
-            Console.WriteLine(a.Money);
-
-            Console.WriteLine("배송기사님 송장내용");
-            Console.WriteLine(배송기사님.Letter);
-            Console.WriteLine(배송기사님.Money);
+            List<GiftBox> giftBoxList = new List<GiftBox>();
+            giftBoxList.Add(addressA);
+            giftBoxList.Add(addressB);
+            giftBoxList.Add(addressC);
+            Console.WriteLine(giftBoxList[2].Letter);
+            Console.WriteLine("giftBox List Count : " + giftBoxList.Count);
         }
+
+        static GiftBox GiftBoxMaker(string letter, int money)
+        {
+            GiftBox adderss = new GiftBox()
+            {
+                Letter = letter,
+                Money = money
+            };
+            return adderss;
+        }
+
     }
 }
